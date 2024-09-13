@@ -1,0 +1,190 @@
+svarah:
+  name: svarah
+  paper_link: https://github.com/AI4Bharat/Svarah?tab=readme-ov-file
+  subtitle: An Indic accented English speech dataset
+  description: India is the second largest English-speaking country in the world with a speaker base of roughly 130 million. Unfortunately, Indian speakers find a very poor representation in existing English ASR benchmarks such as LibriSpeech, Switchboard, Speech Accent Archive, etc. We address this gap by creating Svarah, a benchmark that contains 9.6 hours of transcribed English audio from 117 speakers across 65 districts across 19 states in India, resulting in a diverse range of accents. The collective set of native languages spoken by the speakers covers 19 of the 22 constitutionally recognized languages of India, belonging to 4 different language families. Svarah includes both read speech and spontaneous conversational data, covering a variety of domains such as history, culture, tourism, government, sports, etc. It also contains data corresponding to popular use cases such as ordering groceries, making digital payments, and using government services (e.g., checking pension claims, checking passport status, etc.). The resulting diversity in vocabulary as well as use cases allows a more robust evaluation of ASR systems for real-world applications.
+  path_to_csv: "data/csv/svarah.csv"
+  columns:
+    [
+      duration,
+      gender,
+      age-group,
+      primary_language,
+      native_place_state,
+      native_place_district,
+      highest_qualification,
+      job_category,
+      occupation_domain,
+    ]
+  is_audio: true
+  filters: [primary_language, age-group, gender]
+  audio_directory: "data/audio/svarah"
+  download_link: https://github.com/AI4Bharat/Svarah
+  explore_link: "/svarah/explore"
+
+lahaja:
+  name: lahaja
+  paper_link: https://github.com/AI4Bharat/Lahaja
+  path_to_csv: "data/csv/lahaja.csv"
+  subtitle: A Robust Multi-accent Benchmark for Evaluating Hindi ASR Systems
+  description: Hindi, one of the most spoken language of India, exhibits a diverse array of accents due to its usage among individuals from diverse linguistic origins. To enable a robust evaluation of Hindi ASR systems on multiple accents, we create a benchmark, LAHAJA, which contains read and extempore speech on a diverse set of topics and use cases, with a total of 12.5 hours of Hindi audio, sourced from 132 speakers spanning 83 districts of India. We evaluate existing open-source and commercial models on LAHAJA and find their performance to be poor. We then train models using different datasets and find that our model trained on multilingual data with good speaker diversity outperforms existing models by a significant margin. We also present a fine grained analysis which shows that the performance declines for speakers from North-East and South India, especially with content heavy in named entities and specialized terminology.
+  columns:
+    [
+      duration,
+      scenario,
+      native_language,
+      gender,
+      age_group,
+      native_state,
+      native_district,
+      task_name,
+      job_category,
+      occupation_domain,
+      occupation,
+      job_type,
+      age-group,
+      qual,
+    ]
+  is_audio: true
+  filters: [gender, native_language, age-group]
+  audio_directory: "data/audio/lahaja"
+  download_link: https://github.com/AI4Bharat/Lahaja
+  explore_link: "/lahaja/explore"
+
+shrutilipi:
+  name: shrutilipi
+  paper_link: https://arxiv.org/abs/2208.12666
+  path_to_csv: "data/csv/shrutilipi.csv"
+  subtitle:
+  description: Shrutilipi is a labelled ASR corpus obtained by mining parallel audio and text pairs at the document scale from All India Radio news bulletins for 12 Indian languages - Bengali, Gujarati, Hindi, Kannada, Malayalam, Marathi, Odia, Punjabi, Sanskrit, Tamil, Telugu, Urdu. The corpus has over 6400 hours of data across all languages.
+  columns: []
+  is_audio: true
+  filters: []
+  audio_directory: "data/audio/shrutilipi"
+  download_link: https://ai4bharat.iitm.ac.in/shrutilipi/
+  explore_link: "/shrutilipi/explore"
+
+sangraha:
+  name: sangraha
+  paper_link: https://arxiv.org/abs/2403.06350
+  subtitle: A Indic language pretraining data
+  description: Sangraha is the largest high-quality, cleaned Indic language pretraining data containing 251B tokens summed up over 22 languages, extracted from curated sources, existing multilingual corpora and large scale translations.
+  path_to_csv: "data/csv/sangraha.csv"
+  is_audio: false
+  download_link: https://huggingface.co/datasets/ai4bharat/sangraha
+  columns: [doc_id, text, split, lang]
+  filters: [split, lang]
+  explore_link: "/sangraha/explore"
+
+samanantar:
+  name: samanantar
+  paper_link: https://arxiv.org/abs/2104.05596
+  description: We present Samanantar, the largest publicly available parallel corpora collection for Indic languages. The collection contains a total of 49.7 million sentence pairs between English and 11 Indic languages (from two language families). Specifically, we compile 12.4 million sentence pairs from existing, publicly-available parallel corpora, and additionally mine 37.4 million sentence pairs from the web, resulting in a 4x increase. We mine the parallel sentences from the web by combining many corpora, tools, and methods - (a) web-crawled monolingual corpora, (b) document OCR for extracting sentences from scanned documents, (c) multilingual representation models for aligning sentences, and (d) approximate nearest neighbor search for searching in a large collection of sentences. Human evaluation of samples from the newly mined corpora validate the high quality of the parallel sentences across 11 languages. Further, we extract 83.4 million sentence pairs between all 55 Indic language pairs from the English-centric parallel corpus using English as the pivot language. We trained multilingual NMT models spanning all these languages on Samanantar, which outperform existing models and baselines on publicly available benchmarks, such as FLORES, establishing the utility of Samanantar.
+  subtitle: A Indic language parallel corpora
+  path_to_csv: "data/csv/samanantar.csv"
+  is_audio: false
+  download_link: https://huggingface.co/datasets/ai4bharat/samanantar
+  explore_link: "/samanantar/explore"
+  columns: [sentence_en, sentence_xx, language]
+  filters: [language]
+
+aksharantar:
+  name: aksharantar
+  paper_link: https://arxiv.org/abs/2205.03018
+  subtitle: Open Indic-language Transliteration datasets and models for the Next Billion Users
+  description: Aksharantar is the largest publicly available transliteration dataset for 20 Indic languages. The corpus has 26M Indic language-English transliteration pairs.
+  path_to_csv: "data/csv/aksharantar.csv"
+  is_audio: false
+  download_link: https://huggingface.co/datasets/ai4bharat/Aksharantar
+  explore_link: "/aksharantar/explore"
+  columns: [native_word, english_word, source, lang, score]
+  filters: [lang, source]
+
+IndicVoices-R:
+  name: IndicVoices-R
+  paper_link: https://arxiv.org/pdf/2409.05356
+  subtitle: Unlocking a Massive Multilingual Multi-speaker Speech Corpus for Scaling Indian TTS
+  description: Recent advancements in text-to-speech (TTS) synthesis show that large-scale models trained with extensive web data produce highly natural-sounding output. However, such data is scarce for Indian languages due to the lack of high-quality, manually subtitled data on platforms like LibriVox or YouTube. To address this gap, we enhance existing large-scale ASR datasets containing natural conversations collected in low-quality environments to generate high-quality TTS training data. Our pipeline leverages the cross-lingual generalization of denoising and speech enhancement models trained on English and applied to Indian languages. This results in IndicVoices-R (IV-R), the largest multilingual Indian TTS dataset derived from an ASR dataset, with 1,704 hours of high-quality speech from 10,496 speakers across 22 Indian languages. IV-R matches the quality of gold-standard TTS datasets like LJSpeech, LibriTTS, and IndicTTS. We also introduce the IV-R Benchmark, the first to assess zero-shot, few-shot, and many-shot speaker generalization capabilities of TTS models on Indian voices, ensuring diversity in age, gender, and style. We demonstrate that fine-tuning an English pre-trained model on a combined dataset of high-quality IndicTTS and our IV-R dataset results in better zero-shot speaker generalization compared to fine-tuning on the IndicTTS dataset alone. Further, our evaluation reveals limited zero-shot generalization for Indian voices in TTS models trained on prior datasets, which we improve by fine-tuning the model on our data containing diverse set of speakers across language families. We open-source all data and code, releasing the first TTS model for all 22 official Indian languages.
+  path_to_csv: "data/csv/ivr.csv"
+  columns:
+    [
+      duration,
+      speaker,
+      language,
+      text
+    ]
+  is_audio: true
+  filters: [language, speaker]
+  audio_directory: "data/audio/ivr"
+  download_link: https://github.com/AI4Bharat/IndicVoices-R
+  explore_link: "/IndicVoices-R/explore"
+
+IndicOOV:
+  name: IndicOOV
+  paper_link: https://arxiv.org/pdf/2407.13435
+  subtitle: Enhancing Out-of-Vocabulary Performance of Indian TTS Systems for Practical Applications through Low-Effort Data Strategies
+  description: Publicly available TTS datasets for low-resource languages like Hindi and Tamil typically contain 10-20 hours of data, leading to poor vocabulary coverage. This limitation becomes evident in downstream applications where domain-specific vocab- ulary coupled with frequent code-mixing with English, results in many OOV words. To highlight this problem, we create a benchmark containing OOV words from several real-world applications. Indeed, state-of-the-art Hindi and Tamil TTS systems perform poorly on this OOV benchmark, as indicated by intelligibility tests. To improve the model’s OOV performance, we propose a low-effort and economically viable strategy to obtain more training data. Specifically, we propose using volunteers as opposed to high quality voice artists to record words containing character bigrams unseen in the training data. We show that using such inexpensive data, the model’s performance improves on OOV words, while not affecting voice quality and in-domain performance.
+  path_to_csv: "data/csv/ivr.csv"
+  is_audio: false
+  download_link: https://github.com/AI4Bharat/IndicVoices-R
+  #explore_link: "/IndicOOV/explore"
+  #columns:
+  # [
+  #   duration,
+  #   speaker,
+  #   language,
+  #   text
+  # ]
+  is_audio: true
+  #filters: [language, speaker]
+  #audio_directory: "data/audio/ivr"
+
+    
+FBI:
+  name: FBI
+  paper_link: https://arxiv.org/abs/2406.13439
+  subtitle: Finding Blindspots in LLM Evaluations with Interpretable Checklists
+  description: We present FBI, our novel meta-evaluation framework designed to assess the robustness of evaluator LLMs across diverse tasks and evaluation strategies.
+  path_to_csv: "data/csv/fbi.csv"
+  columns:
+    [
+      cdx,
+      question,
+      og,
+      perturbed_gpt4,
+    ]
+  is_audio: false
+  filters: []
+  # audio_directory: "data/audio/svarah"
+  download_link: https://github.com/AI4Bharat/FBI
+  explore_link: "/FBI/explore"
+
+Bhasha-Abhijnaanam:
+  name: Bhasha-Abhijnaanam
+  paper_link: https://aclanthology.org/2023.acl-short.71/
+  subtitle: FNative-script and romanized Language Identification for 22 Indic languages
+  description: We create publicly available language identification (LID) datasets and models in all 22 Indian languages listed in the Indian constitution in both native-script and romanized text. First, we create Bhasha-Abhijnaanam, a language identification test set for native-script as well as romanized text which spans all 22 Indic languages. We also train IndicLID, a language identifier for all the above-mentioned languages in both native and romanized script.
+  path_to_csv: "data/csv/Bhasha-Abhijnaanam.csv"
+  columns:
+    [
+      "native sentence",
+      "romanized sentence",
+      language,
+      script,
+    ]
+  is_audio: false
+  filters: [language, script]
+  download_link: https://huggingface.co/datasets/ai4bharat/Bhasha-Abhijnaanam
+  explore_link: "/Bhasha-Abhijnaanam/explore"
+
+dhwani:
+  name: dhwani
+  paper_link: https://arxiv.org/abs/2111.03945
+  subtitle: Youtube Data  for IndicWav2Vec
+  description: For downloading, chunking, SNR filtering publicly available audio data for Building ASR systems for the next billion users
+  path_to_csv: "data/csv/dhwani.csv"
+  is_audio: False
+  explore_link: "/dhwani/explore"
+  columns: ["ID", "lang"]
+  filters: ["lang"]
+
