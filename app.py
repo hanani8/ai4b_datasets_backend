@@ -1,9 +1,8 @@
-from flask import Flask, jsonify, request, send_file, make_response, Response
+from flask import Flask, jsonify, request, send_file, make_response
 from flask_cors import CORS
 import pandas as pd
 import yaml
 import os
-import json
 
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -17,7 +16,8 @@ dataset_dfs = {}
 
 # Load all datasets into global DataFrames at startup
 for dataset, config in datasets_config.items():
-    dataset_dfs[dataset] = pd.read_csv(config['path_to_csv'])
+    if config.get('path_to_csv') is not None:
+        dataset_dfs[dataset] = pd.read_csv(config['path_to_csv'])
 
 
 @app.route('/api/datasets')
@@ -34,8 +34,9 @@ def get_dataset_data(dataset):
 
     config = datasets_config[dataset]
     df = dataset_dfs.get(dataset)
-    
-    df = df.fillna("")
+
+    if df is None:
+        return jsonify({"error": "Dataset not found"}), 400
 
     # Apply filters
     for filter in config['filters']:
@@ -45,19 +46,11 @@ def get_dataset_data(dataset):
 
     # Sample 10 random rows
     data = df.sample(n=min(10, len(df))).to_dict('records')
-   
-    # Convert the data to JSON using json.dumps with ensure_ascii=False
-    json_response = json.dumps({
+
+    return jsonify({
         "data": data,
         "total": len(df),
-    }, ensure_ascii=False)  # ensure_ascii=False allows non-English characters to be preserved
-
-    # Return the JSON response with the correct content type
-    return Response(json_response, content_type='application/json; charset=utf-8')
-   #  return jsonify({
-   #     "data": data,
-   #     "total": len(df),
-   # })
+    })
 
 
 @app.route('/api/filters/<dataset>')
@@ -68,6 +61,9 @@ def get_dataset_filters(dataset):
 
     config = datasets_config[dataset]
     df = dataset_dfs.get(dataset)
+
+    if df is None:
+        return jsonify({"error": "Dataset not found"}), 400
 
     filters = {filter: df[filter].unique().tolist() for filter in config['filters']}
     print(filters)
@@ -100,3 +96,4 @@ if __name__ == '__main__':
     # gunicorn -w 4 -b 0.0.0.0:8000 app:app
     app.run(host='0.0.0.0', debug=False)  # Debug is turned off for production
     # pass
+
